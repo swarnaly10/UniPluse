@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="LightCyan">#cbeef3</color>
+    <color name="BubblegumPink">#f26a8d</color>
+    <color name="CrushedBerry">#880d1e</color>
 </resources>
