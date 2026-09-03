@@ -9,9 +9,10 @@
     tools:context=".MainActivity"
     tools:ignore="NamespaceTypo">
     <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="wrap_content"
+        android:layout_height="wrap_content"/>
     <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,14 +1,23 @@
 package com.dev.unipluse;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import java.time.Instant;
 
 public class MainActivity extends AppCompatActivity {
+
+    private LinearLayout navHome, navDiscover, navNotification, navProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +29,44 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        navHome = findViewById(R.id.navHome);
+        navDiscover = findViewById(R.id.navDiscover);
+        navNotification = findViewById(R.id.navNotification);
+        navProfile = findViewById(R.id.navProfile);
+
+        loadFragment(new HomeFragment());
+        navHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new HomeFragment());
+            }
+        });
+        loadFragment(new DiscoverFragment());
+        navDiscover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new DiscoverFragment());
+            }
+        });
+        loadFragment(new NotificationFragment());
+        navNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new NotificationFragment());
+            }
+        });
+        loadFragment(new ProfileFragment());
+        navProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new ProfileFragment());
+            }
+        });
+
+            }
+            private void loadFragment(Fragment fragment){
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager(). beginTransaction();
+                fragmentTransaction.replace(R.id.frameLayout, fragment);
+                fragmentTransaction.commitAllowingStateLoss();
+            }
     }
-}
